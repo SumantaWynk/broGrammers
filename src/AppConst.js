@@ -1,11 +1,11 @@
 export const EMOJI_URL = {
-    SAD: 'https://tvtbr.s3.amazonaws.com/grandslam/content/2019_7_26/sad.gif',
-    NEUTRAL: 'https://tvtbr.s3.amazonaws.com/grandslam/content/2019_7_26/Neutral_emoji.jpeg',
-    ANGRY: 'https://tvtbr.s3.amazonaws.com/grandslam/content/2019_7_26/Angry.gif',
-    SURPRISED: 'https://tvtbr.s3.amazonaws.com/grandslam/content/2019_7_26/Surprised_face.jpeg',
-    DISGUSTING: 'https://tvtbr.s3.amazonaws.com/grandslam/content/2019_7_26/Disgiusted.jpeg',
-    FEARFUL: 'https://tvtbr.s3.amazonaws.com/grandslam/content/2019_7_26/Fearful.jpeg',
-    HAPPY: 'https://tvtbr.s3.amazonaws.com/grandslam/content/2019_7_26/smiley-face-with-nerd-glasses-27.gif'
+    SAD: '/sad.png',
+    NEUTRAL: '/nuetral.png',
+    ANGRY: '/angry.png',
+    SURPRISED: '/surprise.png',
+    DISGUSTING: '/disgust.png',
+    FEARFUL: '/fearful.png',
+    HAPPY: '/happy.png'
 }
 
 
@@ -57,7 +57,8 @@ export const EMOJI = {
     SURPRISED: 'surprised',
     DISGUSTING: 'disgusting',
     FEARFUL: 'fearful',
-    HAPPY: 'happy'
+    HAPPY: 'happy',
+    DEFAULT: 'default'
 }
 
 

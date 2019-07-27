@@ -12,7 +12,8 @@ class App extends Component {
     super(props);
     this.state = {
       detecting: false,
-      currentMood: null
+      currentMood: null,
+      stopCam: false
     }
   }
   componentDidMount() {
@@ -50,7 +51,12 @@ class App extends Component {
 
   startVideo = (videoObject) => {
     navigator.getUserMedia(
-      { video: {} },
+      {
+        video: {
+          width: { min: 222, max: 222 },
+          height: { min: 410, max: 410 },
+        }
+      },
       stream => {
         videoObject.srcObject = stream;
         this.MediaStream = stream.getTracks()[0];
@@ -71,15 +77,17 @@ class App extends Component {
     if (globalmood.length === 0) {
       this.setState({
         detecting: false,
-        currentMood: 'default'
+        currentMood: 'default',
+        stopCam: false
       })
     } else {
       this.setState({
         detecting: false,
-        currentMood: currentMood
+        currentMood: currentMood,
+        stopCam: false
       })
     }
-
+    document.querySelector('canvas').remove();
     globalmood = [];
   }
 
@@ -127,6 +135,12 @@ class App extends Component {
     })
     const video = document.getElementById('video');
     this.init(video);
+
+    setTimeout(() => {
+      this.setState({
+        stopCam: true
+      })
+    }, 10000)
 
   }
 
@@ -183,39 +197,61 @@ class App extends Component {
     }
   }
 
+  toggleCard = () => {
+    this.startDetectingMood();
+  }
   render() {
     const { currentMood } = this.state;
     return (
-      <div className="App">
-        <div className="jumbotron">
-          <div className="row">
-            <div className="col-md-6">
-              <span id="canvasElem">
-                <video id="video" width="600" height="340" autoPlay muted style={{ border: '1px solid red' }}></video>
-              </span>
-              <br />
-              {
-                this.state.detecting ? <button type="button" className="btn btn-info" disabled>Detecting Mood...</button> : <button type="button" className="btn btn-success" onClick={this.startDetectingMood}>Detect Mood</button>
-              }
-              <button type="button" className="btn btn-danger" onClick={this.endVideo}>End Detection</button>
-            </div>
-            <div className="col-md-6">
-              {
-                !currentMood ? null :
-                  <MoodDetectByEmoji
-                    currentMood={currentMood}
-                  />
-              }
+      <>
+        <div className="maincont">
+          <div className="flip-card" >
+            <div className="flip-card-inner" id="card">
+              <div className="cameraview" >
+                <span id="canvasElem">
+                  <video id="video" width="226" height="410" autoPlay muted ></video>
+                </span>
+                <div className="flip-card-front">
+                  {
+                    this.state.detecting && !this.state.stopCam ? <button className="btn  btn-outline-success" id="btn" disabled>Analyzing ...</button> :
+                      this.state.detecting && this.state.stopCam ? <button className="btn  btn-outline-success" id="btn" onClick={this.endVideo}><b>Stop Cam</b></button> : <button className="btn  btn-outline-success" id="btn" onClick={this.toggleCard}><b>Detect</b></button>
+                  }
+                </div>
+
+              </div>
             </div>
           </div>
+          {/* {
+            this.state.detecting ? <button type="button" disabled>Detecting Mood...</button> : <button type="button" onClick={this.startDetectingMood}>Detect Mood</button>
+          }
+          <button type="button" className="btn btn-danger" onClick={this.endVideo}>End Detection</button> */}
+
+          <div className="emoji-icon">
+            {
+              !currentMood ? null :
+                <MoodDetectByEmoji
+                  currentMood={currentMood}
+                />
+            }
+          </div>
+
+          {
+            !currentMood ? null :
+              <div className="text" >
+                <h3>{currentMood === 'default' ? 'Expressionless ' : currentMood}</h3>
+              </div>
+          }
+
         </div>
-        {
-          !currentMood || currentMood === 'default' ? null :
-            <LayoutContainer
-              currentMood={currentMood}
-            />
-        }
-      </div>
+        <div className="contentcont">
+          {
+            !currentMood || currentMood === 'default' ? null :
+              <LayoutContainer
+                currentMood={currentMood}
+              />
+          }
+        </div>
+      </>
     )
   }
 }
