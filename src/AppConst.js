@@ -10,7 +10,7 @@ export const EMOJI_URL = {
 
 
 export const PACKAGE_URL_ATV = {
-    SAD: 'https://contentapi-dev2.wynk.in/app/v1/package?id=ATV_PACKAGE_1564125890988&isMax=false&count=30&offset=0&appId=WEB&os=WEBOS',
+    SAD: 'https://contentapi-dev2.wynk.in/app/v1/package?id=ATV_PACKAGE_1564192760077&isMax=false&count=30&offset=0&appId=WEB&os=WEBOS&chfhh',
     NEUTRAL: 'https://contentapi-dev2.wynk.in/app/v1/package?id=ATV_PACKAGE_1564126759068&isMax=false&count=30&offset=0&appId=WEB&os=WEBOS',
     ANGRY: 'https://contentapi-dev2.wynk.in/app/v1/package?id=ATV_PACKAGE_1564127569020&isMax=false&count=30&offset=0&appId=WEB&os=WEBOS',
     SURPRISED: 'https://contentapi-dev2.wynk.in/app/v1/package?id=ATV_PACKAGE_1564127987945&isMax=false&count=30&offset=0&appId=WEB&os=WEBOS',
@@ -20,7 +20,7 @@ export const PACKAGE_URL_ATV = {
 }
 
 export const PACKAGE_ID = {
-    SAD: 'ATV_PACKAGE_1564125890988',
+    SAD: 'ATV_PACKAGE_1564192760077',
     NEUTRAL: 'ATV_PACKAGE_1564126759068',
     ANGRY: 'ATV_PACKAGE_1564127569020',
     SURPRISED: 'ATV_PACKAGE_1564127987945',
