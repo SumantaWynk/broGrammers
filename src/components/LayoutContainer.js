@@ -85,6 +85,7 @@ class LayoutContainer extends Component {
         }
         return (
             <>
+                <h1>EMODER Movies</h1>
                 <div className="contain">
                     <div className="row">
                         <div className="row__inner">
@@ -92,6 +93,7 @@ class LayoutContainer extends Component {
                         </div>
                     </div>
                 </div>
+                <h1>EMODER Music</h1>
                 <div className="contain">
                     <div className="row">
                         <div className="row__inner">

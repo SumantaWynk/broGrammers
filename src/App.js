@@ -246,6 +246,7 @@ class App extends Component {
   }
 
   toggleCard = () => {
+    document.querySelector('.cameraview').classList.add('imghide');
     this.startDetectingMood();
   }
   render() {
@@ -264,6 +265,8 @@ class App extends Component {
                     this.state.detecting && !this.state.stopCam ? <button className="btn  btn-outline-success" id="btn" disabled>Analyzing ...</button> :
                       this.state.detecting && this.state.stopCam ? <button className="btn  btn-outline-success" id="btn" onClick={this.endVideo}><b>Stop Cam</b></button> : <button className="btn  btn-outline-success" id="btn" onClick={this.toggleCard}><b>Detect</b></button>
                   }
+                  <img src="/brogrammer-firstimage.png" alt="brogrammer-firstimage" className="imgFront" />
+
                 </div>
 
               </div>

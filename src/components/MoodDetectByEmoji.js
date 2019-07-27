@@ -30,7 +30,7 @@ class MoodDetectByEmoji extends Component {
                     break;
                 case EMOJI.DISGUSTING:
                     this.setState({
-                        currentMoodEmoji: EMOJI_URL.DISGUSTING,
+                        currentMoodEmoji: EMOJI_URL.DISGUSTED,
                     })
                     break;
                 case EMOJI.FEARFUL:
