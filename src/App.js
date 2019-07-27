@@ -146,12 +146,50 @@ class App extends Component {
 
   getMood = async (detections) => {
     if (detections) {
-      var angrystring = detections.expressions.angry.toString().split('.')[1].slice(0, 5);
-      var dstring = detections.expressions.disgusted.toString().split('.')[1].slice(0, 5);
-      var fxstring = detections.expressions.fearful.toString().split('.')[1].slice(0, 5);
+      // var angrystring = detections.expressions.angry.toString().split('.')[1].slice(0, 5);
+      // var dstring = detections.expressions.disgusted.toString().split('.')[1].slice(0, 5);
+      // var fxstring = detections.expressions.fearful.toString().split('.')[1].slice(0, 5);
+      var angrystring;
+      var dstring;
+      var fxstring;
       var happystring;
+      var neutralstring;
+      var sadstring;
+      var surstring;
+
       var exacthappy = detections.expressions.happy;
       var exactneutral = detections.expressions.neutral;
+      var exactsad = detections.expressions.sad;
+      var exactsur = detections.expressions.surprised;
+      var exactangry = detections.expressions.angry;
+      var exactdisgust = detections.expressions.disgusted;
+      var exactfear = detections.expressions.fearful;
+
+
+      if (exactangry === 1) {
+        angrystring = 100000;
+        //console.log(happystring)
+      }
+      else
+        angrystring = detections.expressions.angry.toString().split('.')[1].slice(0, 5);
+
+
+      if (exactdisgust === 1) {
+        dstring = 100000;
+        //console.log(happystring)
+      }
+      else
+        dstring = detections.expressions.disgusted.toString().split('.')[1].slice(0, 5);
+
+
+      if (exactfear === 1) {
+        fxstring = 100000;
+        //console.log(happystring)
+      }
+      else
+        fxstring = detections.expressions.fearful.toString().split('.')[1].slice(0, 5);
+
+
 
       if (exacthappy === 1) {
         happystring = 100000;
@@ -159,7 +197,7 @@ class App extends Component {
       }
       else
         happystring = detections.expressions.happy.toString().split('.')[1].slice(0, 5);
-      var neutralstring;
+
       if (exactneutral === 1) {
         neutralstring = 100000;
       }
@@ -167,8 +205,18 @@ class App extends Component {
         neutralstring = detections.expressions.neutral.toString().split('.')[1].slice(0, 5);
 
 
-      var sadstring = detections.expressions.sad.toString().split('.')[1].slice(0, 5);
-      var surstring = detections.expressions.surprised.toString().split('.')[1].slice(0, 5);
+      if (exactsad === 1) {
+        sadstring = 100000;
+      }
+      else
+        sadstring = detections.expressions.sad.toString().split('.')[1].slice(0, 5);
+
+      if (exactsur === 1) {
+        surstring = 100000;
+      }
+      else
+        surstring = detections.expressions.surprised.toString().split('.')[1].slice(0, 5);
+
 
       var angry = parseInt(angrystring);
       var disgusted = parseInt(dstring);
